@@ -23,12 +23,11 @@ function createPackageJson(pkg: PackageJson): Pick<PackageJson, CopiedField> & {
   main: string;
   types: string;
 } {
-  const packageJson: Record<string, unknown> & {
-    main: string;
-    types: string;
-  } = {
+  const packageJson: Record<string, unknown> = {
     main: './index.js',
     types: './index.d.ts',
+    exports: './index.js',
+    type: 'module',
   };
 
   for (const field of copiedFields) {

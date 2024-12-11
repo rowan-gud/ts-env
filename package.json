@@ -1,21 +1,14 @@
 {
-  "name": "@ellefe/optimus",
-  "version": "1.0.0",
+  "name": "@ellefe/ts-env",
+  "version": "1.0.0-alpha.0",
   "description": "",
   "keywords": [
     "typescript",
-    "result",
-    "option",
-    "maybe",
-    "rust",
-    "sum",
-    "types",
-    "type",
-    "system",
-    "functional",
-    "fp"
+    "environment",
+    "env",
+    "variables"
   ],
-  "bugs": "https://github.com/rowan-gud/optimus/issues",
+  "bugs": "https://github.com/rowan-gud/ts-env/issues",
   "license": "MIT",
   "author": {
     "name": "Rowan Gudmundsson",
@@ -27,7 +20,7 @@
       "email": "rowan.gudmunds@gmail.com"
     }
   ],
-  "repository": "github:rowan-gud/optimus",
+  "repository": "github:rowan-gud/ts-env",
   "type": "module",
   "scripts": {
     "build": "concurrently \"npm:build:swc\" \"npm:build:tsc\" && npm run build:pkg",
@@ -77,5 +70,8 @@
     "scripts": {
       "postbump": "node --print 'require(\"./package.json\").version' > VERSION && git add VERSION"
     }
+  },
+  "dependencies": {
+    "@ellefe/ts-core": "^1.1.1"
   }
 }
