@@ -21,7 +21,7 @@
     }
   ],
   "repository": "github:rowan-gud/ts-env",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "build": "concurrently \"npm:build:swc\" \"npm:build:tsc\" && npm run build:pkg",
     "build:swc": "swc src --out-dir dist --copy-files --strip-leading-paths",
@@ -72,6 +72,6 @@
     }
   },
   "dependencies": {
-    "@ellefe/ts-core": "^1.1.1"
+    "@ellefe/ts-core": "^1.1.2"
   }
 }
