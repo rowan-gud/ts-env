@@ -27,7 +27,7 @@ function createPackageJson(pkg: PackageJson): Pick<PackageJson, CopiedField> & {
     main: './index.js',
     types: './index.d.ts',
     exports: './index.js',
-    type: 'module',
+    type: 'commonjs',
   };
 
   for (const field of copiedFields) {
