@@ -13,13 +13,13 @@ describe('class EnvironmentError', () => {
 
       expect(err).toBeInstanceOf(Error);
       expect(err).toMatchObject({
-        type: EnvironmentErrorType.VariableNotFoundError,
-        key: 'key',
         config: {
           type: EnvironmentVariableType.String,
         },
-        raw: 'raw',
+        key: 'key',
         message: 'message',
+        raw: 'raw',
+        type: EnvironmentErrorType.VariableNotFoundError,
       });
     });
   });

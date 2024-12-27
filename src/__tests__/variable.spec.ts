@@ -7,15 +7,15 @@ import {
   stringVar,
 } from '../variable';
 
-describe('stringVar())', () => {
+describe('stringVar()', () => {
   it('should return a string environment variable configuration', () => {
     const cfg = stringVar({
       pattern: 'abc',
     });
 
-    expect(cfg).toEqual({
-      type: EnvironmentVariableType.String,
+    expect(cfg).toStrictEqual({
       pattern: 'abc',
+      type: EnvironmentVariableType.String,
     });
   });
 });
@@ -24,15 +24,15 @@ describe('numberVar()', () => {
   it('should return a number environment variable configuration', () => {
     const cfg = numberVar({
       format: 'integer',
-      min: 1,
       max: 10,
+      min: 1,
     });
 
-    expect(cfg).toEqual({
-      type: EnvironmentVariableType.Number,
+    expect(cfg).toStrictEqual({
       format: 'integer',
-      min: 1,
       max: 10,
+      min: 1,
+      type: EnvironmentVariableType.Number,
     });
   });
 });
@@ -41,7 +41,7 @@ describe('booleanVar()', () => {
   it('should return a boolean environment variable configuration', () => {
     const cfg = booleanVar();
 
-    expect(cfg).toEqual({
+    expect(cfg).toStrictEqual({
       type: EnvironmentVariableType.Boolean,
     });
   });
@@ -54,15 +54,15 @@ describe('enumVar()', () => {
     });
 
     expectTypeOf<typeof cfg>().toMatchTypeOf<{
-      type: EnvironmentVariableType;
-      enum: ['a', 'b', 'c'];
       default?: 'a' | 'b' | 'c' | undefined;
+      enum: ['a', 'b', 'c'];
+      type: EnvironmentVariableType;
     }>();
 
-    expect(cfg).toEqual({
-      type: EnvironmentVariableType.Enum,
-      enum: ['a', 'b', 'c'],
+    expect(cfg).toStrictEqual({
       default: 'a',
+      enum: ['a', 'b', 'c'],
+      type: EnvironmentVariableType.Enum,
     });
   });
 });
@@ -71,7 +71,7 @@ describe('durationVar()', () => {
   it('should return a duration environment variable configuration', () => {
     const cfg = durationVar('seconds');
 
-    expect(cfg).toEqual({
+    expect(cfg).toStrictEqual({
       type: EnvironmentVariableType.Duration,
       unit: 'seconds',
     });

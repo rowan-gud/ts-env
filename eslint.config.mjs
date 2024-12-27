@@ -1,30 +1,15 @@
-import eslint from '@eslint/js';
+import { config } from '@ellefe/eslint-config';
 import eslintPrettierConfig from 'eslint-config-prettier';
-import tseslint from 'typescript-eslint';
 
+/** @type {import('typescript-eslint').ConfigArray} */
 export default [
-  { ignores: ['examples/', 'dist/', 'docs/'] },
+  ...config(true, import.meta.dirname),
   {
-    languageOptions: {
-      parserOptions: {
-        project: './tsconfig.json',
-      },
-    },
-  },
-  eslint.configs.recommended,
-  ...tseslint.configs.recommendedTypeChecked,
-  {
+    files: ['scripts/**/*'],
     rules: {
-      '@typescript-eslint/no-unsafe-return': 'off',
-      '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-unused-vars': [
-        'error',
-        {
-          argsIgnorePattern: '^_',
-          varsIgnorePattern: '^_',
-          ignoreRestSiblings: true,
-        },
-      ],
+      'no-console': 'off',
+
+      'jsdoc/require-jsdoc': 'off',
     },
   },
   eslintPrettierConfig,

@@ -34,6 +34,8 @@
     "prepare": "husky"
   },
   "devDependencies": {
+    "@ellefe/eslint-config": "^1.0.0",
+    "@ellefe/prettier-config": "^1.0.0",
     "@eslint/js": "^9.4.0",
     "@swc/cli": "^0.4.0",
     "@swc/core": "^1.5.25",
@@ -72,6 +74,6 @@
     }
   },
   "dependencies": {
-    "@ellefe/ts-core": "^1.1.2"
+    "@ellefe/ts-core": "^1.2.0-alpha.0"
   }
 }
