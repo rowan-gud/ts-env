@@ -16,25 +16,25 @@ enum Enum {
   C = 'c',
 }
 
-function getEnv(store: Record<string, string | undefined> = {}) {
+function getEnv(store: { [key: string]: string | undefined } = {}) {
   return new Environment(
     {
-      STRING_DEFAULT: stringVar({ default: 'default' }),
-      STRING_REQUIRED: stringVar(),
-      STRING_PATTERN: stringVar({ pattern: 'abc' }),
-      NUMBER_DEFAULT: numberVar({ default: 42 }),
-      NUMBER_REQUIRED: numberVar(),
-      NUMBER_INTEGER: numberVar({ format: 'integer' }),
-      NUMBER_MIN: numberVar({ min: 1 }),
-      NUMBER_MAX: numberVar({ max: 10 }),
       BOOLEAN_DEFAULT: booleanVar({ default: true }),
       BOOLEAN_REQUIRED: booleanVar(),
-      ENUM_DEFAULT: enumVar(Enum, { default: Enum.A }),
-      ENUM_REQUIRED: enumVar(Enum),
       DURATION_DEFAULT: durationVar('seconds', {
         default: Duration.from(30, 'seconds'),
       }),
       DURATION_REQUIRED: durationVar('seconds'),
+      ENUM_DEFAULT: enumVar(Enum, { default: Enum.A }),
+      ENUM_REQUIRED: enumVar(Enum),
+      NUMBER_DEFAULT: numberVar({ default: 42 }),
+      NUMBER_INTEGER: numberVar({ format: 'integer' }),
+      NUMBER_MAX: numberVar({ max: 10 }),
+      NUMBER_MIN: numberVar({ min: 1 }),
+      NUMBER_REQUIRED: numberVar(),
+      STRING_DEFAULT: stringVar({ default: 'default' }),
+      STRING_PATTERN: stringVar({ pattern: 'abc' }),
+      STRING_REQUIRED: stringVar(),
     },
     store,
   );
@@ -190,7 +190,7 @@ describe('class Envionment', () => {
       it('should return the duration value of an environment variable', () => {
         const env = getEnv({ DURATION_REQUIRED: '30' });
 
-        expect(env.get('DURATION_REQUIRED')._unwrap()).toEqual(
+        expect(env.get('DURATION_REQUIRED')._unwrap()).toStrictEqual(
           Duration.from(30, 'seconds'),
         );
       });
@@ -206,7 +206,7 @@ describe('class Envionment', () => {
       it('should return the default duration value if the duration value is not set', () => {
         const env = getEnv();
 
-        expect(env.get('DURATION_DEFAULT')._unwrap()).toEqual(
+        expect(env.get('DURATION_DEFAULT')._unwrap()).toStrictEqual(
           Duration.from(30, 'seconds'),
         );
       });

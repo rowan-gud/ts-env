@@ -3,15 +3,17 @@
  * @author Rowan Gudmundsson
  * @since 1.0.0
  */
-import {
-  type EnvironmentVariableConfig,
-  type InferEnvironmentVariableType,
+import type {
+  EnvironmentVariableConfig,
+  InferEnvironmentVariableType,
 } from './variable';
 
 /**
  * The configuration for an environment
  */
-export type EnvironmentConfig = Record<string, EnvironmentVariableConfig>;
+export type EnvironmentConfig<Vars extends string = string> = {
+  [K in Vars]?: EnvironmentVariableConfig;
+};
 
 /**
  * The inferred type of an environment

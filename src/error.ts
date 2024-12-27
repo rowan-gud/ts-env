@@ -3,10 +3,7 @@
  * @author Rowan Gudmundsson
  * @since 1.0.0
  */
-import {
-  type EnvironmentErrorType,
-  type EnvironmentVariableConfig,
-} from './types';
+import type { EnvironmentErrorType, EnvironmentVariableConfig } from './types';
 
 /**
  * An error for environment variable errors
