@@ -28,6 +28,9 @@ jobs:
 
       - name: Publish to Registry
         working-directory: ./dist
-        run: npm publish --access public
+        run: |
+          # https://github.com/Leaflet/Leaflet/pull/8039/files
+          TAG=$(echo $GITHUB_REF_NAME | grep -oP '^v\d+\.\d+\.\d+-?\K(\w+)?')
+          npm publish --access public --tag ${TAG:-latest}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
