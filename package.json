@@ -74,6 +74,6 @@
     }
   },
   "dependencies": {
-    "@ellefe/ts-core": "^1.2.0-alpha.0"
+    "@ellefe/ts-core": "^1.2.0-alpha.1"
   }
 }
